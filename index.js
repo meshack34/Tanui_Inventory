@@ -21,9 +21,9 @@ app.post("/api/create", (req, res) => {
       .doc(`/${Date.now()}/`)
       .create({
         id: Date.now(),
-        name: req.body.name,
-        mobile: req.body.mobile,
-        address: req.body.address,
+        Item: req.body.Item,
+        code: req.body.code,
+        details: req.body.details,
       });
     return res.status(200).send({ status: "Success", msg: "Data Saved" });
   } catch (error) {
@@ -55,9 +55,9 @@ app.get("/api/userDetails", (req, res) => {
 
       docs.map((doc) => {
         const selectedData = {
-          name: doc.data().name,
-          mobile: doc.data().mobile,
-          address: doc.data().address,
+          Item: doc.data().Item,
+          code: doc.data().code,
+          details: doc.data().details,
         };
 
         response.push(selectedData);
@@ -76,9 +76,9 @@ app.put("/api/update/:id", (req, res) => {
   try {
     const reqDoc = db.collection("userdetails").doc(req.params.id);
     reqDoc.update({
-      name: req.body.name,
-      mobile: req.body.mobile,
-      address: req.body.address,
+      Item: req.body.Item,
+      code: req.body.code,
+      details: req.body.details,
     });
     return res.status(200).send({ status: "Success", msg: "Data Updated" });
   } catch (error) {
