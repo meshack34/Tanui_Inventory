@@ -100,4 +100,6 @@ app.delete("/api/delete/:id", (req, res) => {
 });
 
 const port = process.env.PORT || 9001;
+
+// Start the server
 app.listen(port, () => console.log(`Listening to port ${port}`));
